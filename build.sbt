@@ -1,5 +1,6 @@
 lazy val projectVersion = "0.1.0"
 
+lazy val spireVersion = "0.13.0"
 lazy val scalaTestVersion = "3.0.1"
 
 lazy val buildSettings = Seq(
@@ -22,6 +23,7 @@ lazy val commonSettings = Seq(
   version := projectVersion,
   scalacOptions ++= commonScalacOptions,
   libraryDependencies ++= Seq(
+    "org.spire-math" %% "spire" % spireVersion,
     "org.scalatest" %%% "scalatest" % scalaTestVersion % "test"
   )
 )
