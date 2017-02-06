@@ -134,4 +134,34 @@ class InterpolationTableSpec extends FlatSpec with Matchers {
       table3D.apply[Double](position) should equal (result)
     }
   }
+
+  it should "interpolate the values from the grid between the known points (3D)" in {
+    val positions = Table(
+      ("position",              "result"),
+      (Seq(0.25, 10.00, 20.00),     1.75),
+      (Seq(0.50, 10.00, 20.00),     2.50),
+      (Seq(0.75, 10.00, 20.00),     3.25),
+      (Seq(1.25, 10.00, 20.00),     4.75),
+      (Seq(1.50, 10.00, 20.00),     5.50),
+      (Seq(1.75, 10.00, 20.00),     6.25),
+
+      (Seq(0.00, 10.00, 20.25),     3.50),
+      (Seq(0.00, 10.00, 20.50),     6.00),
+      (Seq(0.00, 10.00, 20.75),     8.50),
+
+      (Seq(0.50, 10.50, 20.00),     3.00),
+
+      (Seq(1.50, 11.50, 21.50),    22.00),
+
+      (Seq(0.25, 11.00, 20.00),     2.75),
+      (Seq(0.25, 11.00, 21.00),    12.75),
+      (Seq(0.25, 10.00, 21.00),    11.75),
+
+      (Seq(0.25, 10.50, 20.50),     7.25)
+    )
+
+    forAll(positions) { (position: Seq[Double], result: Double) =>
+      table3D.apply[Double](position) should equal (result)
+    }
+  }
 }
